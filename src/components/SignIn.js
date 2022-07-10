@@ -8,10 +8,10 @@ function SignIn() {
       <HiOutlineChat className="w-12 h-12 text-blue-700 mb-5" />
       <div className="flex mt-2">
         <FcGoogle className="w-[30px] h-[30px] md:w-[45px] md:h-[45px]" />
-        <h1 className="text-2xl md:pt-2 pl-1">Sign In with Google</h1>
+        <h1 className="text-xl md:pt-2 pl-1">Sign In with Google</h1>
       </div>
 
-      <div className="rounded-lg bg-[#4964c7] p-3 mt-[40%]">
+      <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
         <button>Sign In with Google</button>
       </div>
     </div>
