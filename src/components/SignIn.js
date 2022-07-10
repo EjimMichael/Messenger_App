@@ -1,10 +1,19 @@
 import React from "react";
+import { auth } from '../firebaseConfig';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 
 function SignIn() {
+  const googleSignIn = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+  .then(res => console.log(res))
+  .catch(err => console.log(err))
+  };
+
   return (
-    <div className="shadow-lg flex flex-col items-center justify-center w-[70%] sm:w-[50%] lg:w-[35%] h-[65%] bg-white m-auto">
+    <div className="shadow-xl flex flex-col items-center justify-center w-[70%] sm:w-[50%] lg:w-[38%] h-[65%] bg-white m-auto">
       <HiOutlineChat className="w-12 h-12 text-blue-700 mb-5" />
       <div className="flex mt-2">
         <FcGoogle className="w-[30px] h-[30px] md:w-[45px] md:h-[45px]" />
@@ -12,7 +21,7 @@ function SignIn() {
       </div>
 
       <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
-        <button>Sign In with Google</button>
+        <button onClick={googleSignIn}>Sign In with Google</button>
       </div>
     </div>
   );
