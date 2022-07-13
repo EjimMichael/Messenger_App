@@ -1,13 +1,17 @@
-import './App.css';
 import SignIn from './components/SignIn';
+import { Routes, Route } from 'react-router-dom';
+import Chat from './components/Chat';
+
 
 function App() {
-  return (
-    <div className="h-screen w-screen bg-gray-200 flex flex-col">
-      <h1 className='text-center text-2xl mt-20'>Mystic Messenger</h1>
-      <SignIn />
-    </div>
-  );
+    return (
+      <div>
+        <Routes>
+          <Route path="/" element={<SignIn />} />
+          <Route path="/chat" element={<Chat />} />
+        </Routes>
+      </div>
+    );
 }
 
 export default App;

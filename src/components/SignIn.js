@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { auth } from '../firebaseConfig';
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function SignIn() {
+  const [isUserSignedIn, setIsUserSignedIn] = useState(true);
+  const auth = getAuth();
+  const navigate = useNavigate();
+
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
@@ -12,16 +18,35 @@ function SignIn() {
   .catch(err => console.log(err))
   };
 
-  return (
-    <div className="shadow-xl flex flex-col items-center justify-center w-[70%] sm:w-[50%] lg:w-[38%] h-[65%] bg-white m-auto">
-      <HiOutlineChat className="w-12 h-12 text-blue-700 mb-5" />
-      <div className="flex mt-2">
-        <FcGoogle className="w-[30px] h-[30px] md:w-[45px] md:h-[45px]" />
-        <h1 className="text-xl md:pt-2 pl-1">Sign In with Google</h1>
-      </div>
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      return setIsUserSignedIn(true);
+    } else {
+      setIsUserSignedIn(false);
+    }
+  });
 
-      <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
-        <button onClick={googleSignIn}>Sign In with Google</button>
+  // useEffect(() => {
+  //   if(isUserSignedIn !== null) {
+  //     navigate('/chat');
+  //   }
+  // }, [isUserSignedIn, navigate])
+
+  return (
+    <div className="h-screen w-screen bg-gray-200 flex flex-col">
+      <h1 className="text-center text-2xl mt-20">Mystic Messenger</h1>
+      <div className="shadow-xl flex flex-col items-center justify-center w-[70%] sm:w-[50%] lg:w-[38%] h-[65%] bg-white m-auto">
+        <HiOutlineChat className="w-12 h-12 text-blue-700 mb-5" />
+        <div className="flex mt-2">
+          <FcGoogle className="w-[30px] h-[30px] md:w-[45px] md:h-[45px]" />
+          <h1 className="text-xl md:pt-2 pl-1">Sign In with Google</h1>
+        </div>
+
+        <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
+          <Link to="/chat">
+            <button onClick={googleSignIn}>Sign In with Google</button>
+          </Link>
+        </div>
       </div>
     </div>
   );
