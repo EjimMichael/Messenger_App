@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { auth } from '../firebaseConfig';
+import { useState } from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 function SignIn() {
-  const [isUserSignedIn, setIsUserSignedIn] = useState(true);
   const auth = getAuth();
-  const navigate = useNavigate();
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -17,20 +14,6 @@ function SignIn() {
   .then(res => console.log(res))
   .catch(err => console.log(err))
   };
-
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      return setIsUserSignedIn(true);
-    } else {
-      setIsUserSignedIn(false);
-    }
-  });
-
-  // useEffect(() => {
-  //   if(isUserSignedIn !== null) {
-  //     navigate('/chat');
-  //   }
-  // }, [isUserSignedIn, navigate])
 
   return (
     <div className="h-screen w-screen bg-gray-200 flex flex-col">
@@ -43,9 +26,9 @@ function SignIn() {
         </div>
 
         <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
-          <Link to="/chat">
+          {/* <Link to="/chat"> */}
             <button onClick={googleSignIn}>Sign In with Google</button>
-          </Link>
+          {/* </Link> */}
         </div>
       </div>
     </div>
