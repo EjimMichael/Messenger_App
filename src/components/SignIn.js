@@ -1,8 +1,6 @@
-import { useState } from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from 'react-router-dom';
 import { getAuth } from "firebase/auth";
 
 function SignIn() {
@@ -26,9 +24,9 @@ function SignIn() {
         </div>
 
         <div className="rounded-lg bg-[#4964c7] p-3 mt-[35%]">
-          {/* <Link to="/chat"> */}
+        
             <button onClick={googleSignIn}>Sign In with Google</button>
-          {/* </Link> */}
+         
         </div>
       </div>
     </div>
