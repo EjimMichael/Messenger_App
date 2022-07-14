@@ -1,9 +1,11 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAAsIn2_Hn5loEkFEumGA4QaQHQCWz-Z3g",
+  apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "messenger-app-87629.firebaseapp.com",
+  databaseURL: "http://messenger-app-87629.firebaseio.com",
   projectId: "messenger-app-87629",
   storageBucket: "messenger-app-87629.appspot.com",
   messagingSenderId: "1054502657957",
@@ -11,5 +13,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-export const auth = getAuth(app);
+export { auth, db };
