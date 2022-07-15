@@ -2,15 +2,35 @@ import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { getAuth } from "firebase/auth";
+import { db } from '../firebaseConfig';
+import { query, getDocs, collection, where, addDoc } from "firebase/firestore";
 
 function SignIn() {
   const auth = getAuth();
 
-  const googleSignIn = () => {
+  const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-  .then(res => console.log(res))
-  .catch(err => console.log(err))
+  //   signInWithPopup(auth, provider)
+  // .then(res => console.log(res))
+  // .catch(err => console.log(err))
+
+    try {
+      const res = await signInWithPopup(auth, provider);
+      const user = res.user;
+      const q = query(collection(db, "users"), where("uid", "==", user.uid));
+      const docs = await getDocs(q);
+      if (docs.docs.length === 0) {
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          name: user.displayName,
+          authProvider: "google",
+          email: user.email,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
   };
 
   return (
