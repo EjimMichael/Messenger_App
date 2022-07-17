@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 import { db, storage, auth } from "../firebaseConfig";
-import {
-  collection,
-  getDoc,
-  doc,
-  updateDoc,
-  query,
-  where,
-  onSnapshot,
-} from "firebase/firestore";
-import { HiOutlineChat, HiOutlineSearch, HiCamera } from "react-icons/hi";
+import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { HiOutlineChat, HiCamera } from "react-icons/hi";
 import SignOut from "./SignOut";
 import {
   ref,
@@ -56,7 +48,7 @@ function Chat() {
   }, [image]);
 
   return user ? (
-    <div className="p-5 w-screen h-screen bg-[#F5F7FB]">
+    <div className="p-5 bg-[#F5F7FB] border-y-2">
       <div className="flex">
         <HiOutlineChat className="w-12 h-12" />
         <h1 className="mt-2 text-lg">Mystic_Chat</h1>
@@ -79,15 +71,7 @@ function Chat() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2">
-        <div>
-          <div className="flex pl-2 m-5 w-[300px] h-9 rounded-full bg-white">
-            <HiOutlineSearch className="mt-3" />
-            <input className="mt-1 pl-1" placeholder="Search" type="text" />
-          </div>
-        </div>
-        <div></div>
-      </div>
+      
     </div>
   ) : null;
 }
