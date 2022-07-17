@@ -17,6 +17,7 @@ function SignIn() {
     try {
       const res = await signInWithPopup(auth, provider);
       const user = res.user;
+      console.log(user);
       // const q = query(collection(db, "users"), where("uid", "==", user.uid));
       // const docs = await getDocs(q);
       // if (docs.docs.length === 0) {
@@ -41,7 +42,7 @@ function SignIn() {
     }
   };
 
-  return (
+  return ( 
     <div className="h-screen w-screen bg-gray-200 flex flex-col">
       <h1 className="text-center text-2xl mt-20">Mystic Messenger</h1>
       <div className="shadow-xl flex flex-col items-center justify-center w-[70%] sm:w-[50%] lg:w-[38%] h-[65%] bg-white m-auto">
@@ -60,5 +61,6 @@ function SignIn() {
     </div>
   );
 }
+
 
 export default SignIn;
