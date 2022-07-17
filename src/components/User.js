@@ -8,13 +8,13 @@ function User({ user }) {
         <HiOutlineSearch className="mt-3" />
         <input className="mt-1 pl-1" placeholder="Search" type="text" />
       </div>
-      <div className='flex cursor-pointer m-auto'>
+      <div className='flex cursor-pointer pt-2'>
         <img
           src={user.avatar || user?.reloadUserInfo?.photoURL}
-          className="w-10 h-10 ml-2 border rounded-full relative"
+          className="w-10 h-10 mx-4 border rounded-full relative"
           alt="avatar"
         />
-        <h4 className=' text-xl'>{user.name}</h4>
+        <h4 className='text-xl mt-1'>{user.name}</h4>
       </div>
     </div>
   );

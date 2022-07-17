@@ -20,7 +20,7 @@ function Chat() {
   }, []);
   console.log(users);
   return (
-    <div className="w-screen h-screen bg-[#F5F7FB]">
+    <div className="w-screen h-screen bg-[#F5F7FB] overflow-hidden">
       <NavBar />
       <div className="grid grid-cols-3">
         <div className="grid-cols-1 border-x-2 h-screen">
