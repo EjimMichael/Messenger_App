@@ -3,7 +3,7 @@ import { HiOutlineChat } from "react-icons/hi";
 import { FcGoogle } from "react-icons/fc";
 import { getAuth } from "firebase/auth";
 import { db } from '../firebaseConfig';
-import { query, getDocs, collection, where, addDoc, Timestamp, setDoc, doc } from "firebase/firestore";
+import { Timestamp, setDoc, doc } from "firebase/firestore";
 
 function SignIn() {
   const auth = getAuth();
