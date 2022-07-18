@@ -1,8 +1,15 @@
-import React from 'react'
-
-function Message() {
+import Moment from 'react-moment';
+function Message({ msg, index}) {
   return (
-    <div>Message</div>
+    <div>
+        <p>
+            {msg.text}
+            <br />
+            <small>
+                <Moment fromNow>{msg.createAt.toDate()}</Moment>
+            </small>
+        </p>
+    </div>
   )
 }
 
