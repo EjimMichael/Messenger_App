@@ -71,16 +71,22 @@ function Chat() {
           ))}
         </div>
 
-        <div className="grid-cols-2 w-[200%]">
+        <div className="grid-cols-2 w-[200%] max-h-full overflow-y-auto">
           {chat ? (
             <>
-              <div className="border-b-2">
+              <div className="border-b">
                 <h3 className="p-3 text-xl">{chat.name}</h3>
               </div>
-              <div>
-                {msgs.length ? msgs.map((msg, index) => <Message key={index} msg={msg} />) : null}
+              <div className="">
+                {msgs.length
+                  ? msgs.map((msg, index) => <Message key={index} msg={msg} user1={user1} />)
+                  : null}
               </div>
-              <Messages handleSubmit={handleSubmit} text={text} setText={setText} />
+              <Messages
+                handleSubmit={handleSubmit}
+                text={text}
+                setText={setText}
+              />
             </>
           ) : (
             <h3 className="text-2xl text-gray-600 text-center mt-[25%]">

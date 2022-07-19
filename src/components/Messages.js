@@ -3,7 +3,7 @@ import { IoSend } from "react-icons/io5";
 
 function Messages({ handleSubmit, text, setText }) {
   return (
-    <form onSubmit={handleSubmit} className="flex mt-[50%]">
+    <form onSubmit={handleSubmit} className="flex mt-[43%] fixed">
       <div className="ml-3">
         <input
           type="text"
