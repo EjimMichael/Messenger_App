@@ -5,7 +5,7 @@ function MessageField({ handleSubmit, text, setText }) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex mt-[43%] absolute inset-x-0 bottom-[16%]"
+      className="flex mt-[43%] absolute inset-x-0 bottom-[18%]"
     >
       <div className="ml-3">
         <input

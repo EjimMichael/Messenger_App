@@ -25,7 +25,7 @@ function Chat() {
       setUsers(users);
     });
     return () => unsub();
-  }, []);
+  }, [user1]);
   
   const selectUser = (user) => {
     setChat(user);
