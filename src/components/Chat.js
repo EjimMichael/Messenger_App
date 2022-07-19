@@ -3,7 +3,7 @@ import NavBar from './NavBar';
 import { db, auth } from "../firebaseConfig";
 import { collection, query, where, onSnapshot, addDoc, Timestamp, orderBy } from "firebase/firestore";
 import User from './User';
-import Messages from './Messages';
+import MessageField from './MessageField';
 import Message from './Message';
 
 function Chat() {
@@ -62,16 +62,16 @@ function Chat() {
   };
 
   return (
-    <div className="w-screen h-screen bg-[#F5F7FB] overflow-hidden">
+    <div className=" bg-[#F5F7FB] overflow-hidden">
       <NavBar />
       <div className="grid grid-cols-3">
-        <div className="grid-cols-1 border-x-2 h-screen">
+        <div className="col-span-1 border-x h-screen">
           {users.map((user) => (
             <User key={user.uid} user={user} selectUser={selectUser} />
           ))}
         </div>
 
-        <div className="grid-cols-2 w-[200%] max-h-full overflow-y-auto">
+        <div className="col-span-2 overflow-y-auto relative">
           {chat ? (
             <>
               <div className="border-b">
@@ -82,7 +82,7 @@ function Chat() {
                   ? msgs.map((msg, index) => <Message key={index} msg={msg} user1={user1} />)
                   : null}
               </div>
-              <Messages
+              <MessageField
                 handleSubmit={handleSubmit}
                 text={text}
                 setText={setText}

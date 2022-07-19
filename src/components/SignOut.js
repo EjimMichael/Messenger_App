@@ -3,7 +3,7 @@ import { auth } from '../firebaseConfig';
 
 function SignOut() {
   return (
-    <div className="h-10 rounded-lg bg-[#4964c7] p-2 ml-[80%] mt-2">
+    <div className="h-10 w-[6%] rounded-lg bg-[#4964c7] p-2 ml-[75%] mt-2">
       <button onClick={() => auth.signOut()}>Sign Out</button>
     </div>
   );

@@ -9,19 +9,17 @@ function Message({ msg, user1, index}) {
     }, [msg]);
   return (
     <div
-      className={`mt-2 ml-2 px-2 border max-w-[50%] rounded-md ${
-        msg.from === user1 ? "text-right" : ""
-      }`}
-      ref={scrollRef}
+      className={`mt-2 ml-2 border w-[40%] ${msg.from === user1 ? "" : ""}`}
+      //   ref={scrollRef}
     >
       <p
-        className={`p-1 text-left font-semibold ${
-          msg.from === user1 ? "bg-white" : "bg-gray-500"
+        className={`px-3 py-1 rounded-lg font-semibold ${
+          msg.from === user1 ? "bg-blue-500" : "bg-gray-400"
         } `}
       >
         {msg.text}
         <br />
-        <small className="">
+        <small className="text-xs">
           <Moment fromNow>{msg.createdAt.toDate()}</Moment>
         </small>
       </p>

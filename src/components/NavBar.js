@@ -48,18 +48,19 @@ function Chat() {
   }, [image]);
 
   return user ? (
-    <div className="p-5 bg-[#F5F7FB] border-y-2">
+    <div className="p-5 bg-[#F5F7FB] border-y">
       <div className="flex">
         <HiOutlineChat className="w-12 h-12" />
         <h1 className="mt-2 text-lg">Mystic_Chat</h1>
         <SignOut />
-        <div className="w-14 h-14 ml-2 border rounded-full relative">
+        <div className="group ml-2 border rounded-full">
           <img
+            className="rounded-full w-16 h-16 relative hover:opacity-75"
             src={user.avatar || user?.reloadUserInfo?.photoURL}
             alt="avatar"
           />
           <label htmlFor="photo">
-            <HiCamera className="absolute" />
+            <HiCamera className="absolute top-14 right-16 cursor-pointer hidden group-hover:block" />
           </label>
           <input
             type="file"
@@ -70,8 +71,6 @@ function Chat() {
           />
         </div>
       </div>
-
-      
     </div>
   ) : null;
 }

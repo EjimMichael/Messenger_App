@@ -6,7 +6,7 @@ import { auth } from './firebaseConfig';
 function App() {
   const [user] = useAuthState(auth);
     return (
-      <div>
+      <div className='max-h-screen max-w-screen overflow-hidden'>
         {user ? <Chat /> : <SignIn />}
         {/* <Routes>
           <Route path="/" element={<SignIn />} />

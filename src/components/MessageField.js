@@ -1,9 +1,12 @@
 import React from "react";
 import { IoSend } from "react-icons/io5";
 
-function Messages({ handleSubmit, text, setText }) {
+function MessageField({ handleSubmit, text, setText }) {
   return (
-    <form onSubmit={handleSubmit} className="flex mt-[43%] fixed">
+    <form
+      onSubmit={handleSubmit}
+      className="flex mt-[43%] absolute inset-x-0 bottom-[16%]"
+    >
       <div className="ml-3">
         <input
           type="text"
@@ -20,4 +23,4 @@ function Messages({ handleSubmit, text, setText }) {
   );
 }
 
-export default Messages;
+export default MessageField;

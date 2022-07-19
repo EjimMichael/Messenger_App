@@ -8,10 +8,10 @@ function User({ user, selectUser }) {
         <HiOutlineSearch className="mt-3" />
         <input className="mt-1 pl-1" placeholder="Search" type="text" />
       </div>
-      <div className='flex cursor-pointer pt-2' onClick={() => selectUser(user)}>
+      <div className='flex cursor-pointer pt-2 border-b' onClick={() => selectUser(user)}>
         <img
           src={user.avatar || user?.reloadUserInfo?.photoURL}
-          className="w-10 h-10 mx-4 border rounded-full relative"
+          className="w-12 h-12 mx-4 border rounded-full relative"
           alt="avatar"
         />
         <h4 className='text-xl mt-1'>{user.name}</h4>
